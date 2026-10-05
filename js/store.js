@@ -33,10 +33,19 @@ function renderCoinShop() {
                 </div>
                 <div class="coin-store-container_item-owned">Owned amount: ${item.amount}</div>
             </div>`);
-
+        document.querySelectorAll(".coin-store-container_item-buy-btn").forEach(btn => {
+            btn.addEventListener("click", () => buyCoinItem(btn.dataset.index));
+        })
     });
 }
 
+function buyCoinItem(index) {
+    let item = coinShop[index];
+    console.log(item.amount)
+    item.amount = item.amount + 1;
+    console.log(item.amount)
+    renderCoinShop();
+}
 
 renderPoints();
 renderCoinShop();
